@@ -34,7 +34,7 @@ const config = {
 
 if (isProduction) {
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   );
 }
 
