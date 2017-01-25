@@ -42,17 +42,52 @@ export const getVocabularyShortID = (refName) => {
     return null;
   }
 
-  const parts = refName.split(':', 5);
-  const namePart = parts[4];
+  const parts = refName.split(':', 6);
+  const itemPart = parts[5];
 
-  if (
-    namePart &&
-    namePart.indexOf('name(') === 0 &&
-    namePart.lastIndexOf(')') === namePart.length - 1
-  ) {
-    return namePart.substring(5, namePart.length - 1);
+  if (itemPart === 'item') {
+    const vocabNamePart = parts[4];
+
+    if (
+      vocabNamePart &&
+      vocabNamePart.indexOf('name(') === 0 &&
+      vocabNamePart.lastIndexOf(')') === vocabNamePart.length - 1
+    ) {
+      return vocabNamePart.substring(5, vocabNamePart.length - 1);
+    }
   }
 
   return null;
 };
 
+/**
+ * Retrieves the vocabulary item short identifier from a given ref name.
+ * @param {string} refName - The ref name
+ * @returns {string} The short ID, or null if the ref name does not contain a vocabulary item
+ * short ID.
+ */
+export const getItemShortID = (refName) => {
+  if (!refName) {
+    return null;
+  }
+
+  const parts = refName.split(':', 7);
+  const itemPart = parts[5];
+
+  if (itemPart === 'item') {
+    const itemNamePart = parts[6];
+
+    if (
+      itemNamePart &&
+      itemNamePart.indexOf('name(') === 0
+    ) {
+      const index = itemNamePart.indexOf(')');
+
+      if (index > -1) {
+        return itemNamePart.substring(5, index);
+      }
+    }
+  }
+
+  return null;
+};

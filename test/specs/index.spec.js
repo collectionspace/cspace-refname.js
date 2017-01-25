@@ -4,6 +4,7 @@ import {
   getDisplayName,
   getServicePath,
   getVocabularyShortID,
+  getItemShortID,
 } from '../../src/index';
 
 const expect = chai.expect;
@@ -89,5 +90,33 @@ describe('getVocabularyShortID', function suite() {
     expect(getVocabularyShortID(
       'urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'Ancient Greek\''
     )).to.equal('languages');
+  });
+});
+
+describe('getItemShortID', function suite() {
+  it('should return null if the ref name is null, undefined, or empty', function test() {
+    expect(getItemShortID(null)).to.equal(null);
+    expect(getItemShortID(undefined)).to.equal(null);
+    expect(getItemShortID('')).to.equal(null);
+  });
+
+  it('should return null if the ref name does not have an item short id', function test() {
+    expect(getItemShortID(
+      'urn:cspace:core.collectionspace.org:collectionobjects:id(36b64339-69ef-4c90-941f)\'LI2017.1.14\''
+    )).to.equal(null);
+
+    expect(getItemShortID(
+      'urn:cspace:core.collectionspace.org:groups:id(d5129f1e-0c33-410f-9bb4)'
+    )).to.equal(null);
+  });
+
+  it('should return the item short id', function test() {
+    expect(getItemShortID(
+      'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)\'Jane Doe\''
+    )).to.equal('JaneDoe1484001439799');
+
+    expect(getItemShortID(
+      'urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'Ancient Greek\''
+    )).to.equal('grc');
   });
 });
