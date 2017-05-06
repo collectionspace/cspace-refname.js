@@ -40,13 +40,13 @@ const sauceLaunchers = {
     version: 'latest',
     platform: 'Windows 10',
   },
-  'safari-ios-9.3': {
+  'safari-ios-10.2': {
     base: 'SauceLabs',
     browserName: 'safari',
     platformName: 'iOS',
-    platformVersion: '9.3',
+    platformVersion: '10.2',
     deviceName: 'iPad Retina Simulator',
-    appiumVersion: '1.5.3',
+    appiumVersion: '1.6',
   },
 };
 
