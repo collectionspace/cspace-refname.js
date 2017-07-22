@@ -57,7 +57,6 @@ const getTestFiles = (config) => {
 
   const defaultTestDirs = [
     'specs',
-    'integration',
   ];
 
   const testDirs = config.dir ? config.dir.split(',') : defaultTestDirs;
@@ -127,13 +126,18 @@ module.exports = function karma(config) {
     },
 
     webpack: {
+      entry: './src/index.js',
       devtool: 'cheap-module-inline-source-map',
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel',
+            use: [
+              {
+                loader: 'babel-loader',
+              },
+            ],
           },
         ],
       },

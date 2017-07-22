@@ -1,5 +1,6 @@
 /* eslint import/no-extraneous-dependencies: "off" */
 
+const path = require('path');
 const webpack = require('webpack');
 
 const library = 'cspaceRefName';
@@ -13,19 +14,22 @@ const config = {
     filename,
     library,
     libraryTarget: 'umd',
-    path: 'dist',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
       },
     ],
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
@@ -33,13 +37,7 @@ const config = {
 };
 
 if (isProduction) {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-    })
-  );
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 module.exports = config;
