@@ -52,16 +52,16 @@ const sauceLaunchers = {
 
 const getTestFiles = (config) => {
   if (config.file) {
-    return config.file.split(',').map(file => `test/${file}`);
+    return config.file.split(',');
   }
 
   const defaultTestDirs = [
-    'specs',
+    'test/specs',
   ];
 
   const testDirs = config.dir ? config.dir.split(',') : defaultTestDirs;
 
-  return testDirs.map(dir => `test/${dir}/**/*.+(js|jsx)`);
+  return testDirs.map(dir => `${dir}/**/*.+(js|jsx)`);
 };
 
 module.exports = function karma(config) {
