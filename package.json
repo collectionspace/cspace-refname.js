@@ -1,6 +1,6 @@
 {
   "name": "cspace-refname",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CollectionSpace refname utilities",
   "author": "Ray Lee <rhlee@berkeley.edu>",
   "license": "ECL-2.0",
@@ -28,7 +28,6 @@
     "check": "npm run lint && npm run test && npm run coverage",
     "clean": "rimraf lib dist coverage",
     "coverage": "istanbul report --root coverage text && istanbul report --root coverage lcov",
-    "doc": "documentation readme src/*.js -s \"API\"",
     "lint": "eslint *.js src test examples",
     "prepare": "npm run clean && npm run build",
     "start": "cross-env NODE_ENV=test karma start",
@@ -45,7 +44,7 @@
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.1",
-    "babel-loader": "^6.2.4",
+    "babel-loader": "^7.1.1",
     "babel-plugin-istanbul": "^1.0.3",
     "babel-preset-es2015": "^6.13.1",
     "babel-register": "^6.11.6",
@@ -69,11 +68,11 @@
     "karma-mocha-reporter": "^2.1.0",
     "karma-sauce-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^1.8.0",
+    "karma-webpack": "^2.0.4",
     "mocha": "^3.0.2",
-    "nyc": "^8.0.0",
+    "nyc": "^11.0.3",
     "rimraf": "^2.5.4",
-    "webpack": "^1.13.1"
+    "webpack": "^3.3.0"
   },
   "nyc": {
     "include": [
