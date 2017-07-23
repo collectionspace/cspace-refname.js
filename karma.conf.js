@@ -126,7 +126,6 @@ module.exports = function karma(config) {
     },
 
     webpack: {
-      entry: './src/index.js',
       devtool: 'cheap-module-inline-source-map',
       module: {
         rules: [
