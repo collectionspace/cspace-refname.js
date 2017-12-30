@@ -1,6 +1,7 @@
 import chai from 'chai';
 
 import {
+  getCsid,
   getDisplayName,
   getServicePath,
   getVocabularyShortID,
@@ -118,5 +119,29 @@ describe('getItemShortID', function suite() {
     expect(getItemShortID(
       'urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'Ancient Greek\''
     )).to.equal('grc');
+  });
+});
+
+describe('getCsid', function suite() {
+  it('should return null if the ref name is null, undefined, or empty', function test() {
+    expect(getCsid(null)).to.equal(null);
+    expect(getCsid(undefined)).to.equal(null);
+    expect(getCsid('')).to.equal(null);
+  });
+
+  it('should return null if the ref name does not have a csid', function test() {
+    expect(getCsid(
+      'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)\'Jane Doe\''
+    )).to.equal(null);
+
+    expect(getCsid(
+      'urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'Ancient Greek\''
+    )).to.equal(null);
+  });
+
+  it('should return the csid', function test() {
+    expect(getCsid(
+      'urn:cspace:core.collectionspace.org:collectionobjects:id(36b64339-69ef-4c90-941f)\'LI2017.1.14\''
+    )).to.equal('36b64339-69ef-4c90-941f');
   });
 });

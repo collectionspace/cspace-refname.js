@@ -91,3 +91,30 @@ export const getItemShortID = (refName) => {
 
   return null;
 };
+
+/**
+ * Retrieves the csid from a given ref name, if present.
+ * @param {string} refName - The ref name
+ * @returns {string} The csid, or null if the ref name does not contain a csid.
+ */
+export const getCsid = (refName) => {
+  if (!refName) {
+    return null;
+  }
+
+  const parts = refName.split(':', 5);
+  const idPart = parts[4];
+
+  if (
+    idPart &&
+    idPart.indexOf('id(') === 0
+  ) {
+    const index = idPart.indexOf(')');
+
+    if (index > -1) {
+      return idPart.substring(3, index);
+    }
+  }
+
+  return null;
+};
