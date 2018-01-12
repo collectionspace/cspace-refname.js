@@ -118,3 +118,27 @@ export const getCsid = (refName) => {
 
   return null;
 };
+
+export const removeDisplayName = (refName) => {
+  if (!refName) {
+    return refName;
+  }
+
+  const start = refName.indexOf("'");
+
+  if (start < 0) {
+    return refName;
+  }
+
+  return refName.substring(0, start);
+};
+
+export const setDisplayName = (refName, displayName) => {
+  if (!refName) {
+    return refName;
+  }
+
+  const strippedRefName = removeDisplayName(refName);
+
+  return `${strippedRefName}'${displayName}'`;
+};

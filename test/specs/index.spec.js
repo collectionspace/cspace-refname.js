@@ -6,6 +6,8 @@ import {
   getServicePath,
   getVocabularyShortID,
   getItemShortID,
+  removeDisplayName,
+  setDisplayName,
 } from '../../src/index';
 
 const expect = chai.expect;
@@ -143,5 +145,57 @@ describe('getCsid', function suite() {
     expect(getCsid(
       'urn:cspace:core.collectionspace.org:collectionobjects:id(36b64339-69ef-4c90-941f)\'LI2017.1.14\''
     )).to.equal('36b64339-69ef-4c90-941f');
+  });
+});
+
+describe('removeDisplayName', function suite() {
+  it('should return the ref name if it is null, undefined, or empty', function test() {
+    expect(removeDisplayName(null)).to.equal(null);
+    expect(removeDisplayName(undefined)).to.equal(undefined);
+    expect(removeDisplayName('')).to.equal('');
+  });
+
+  it('should return the ref name if it does not have a display name', function test() {
+    const refName = 'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)';
+
+    removeDisplayName(refName).should.equal(refName);
+  });
+
+  it('should return a ref name with no display name', function test() {
+    expect(removeDisplayName(
+      'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)\'Jane Doe\''
+    )).to.equal('urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)');
+
+    expect(removeDisplayName(
+      'urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'Ancient Greek\''
+    )).to.equal('urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)');
+  });
+});
+
+describe('setDisplayName', function suite() {
+  it('should return the ref name if it is null, undefined, or empty', function test() {
+    expect(setDisplayName(null, 'foo')).to.equal(null);
+    expect(setDisplayName(undefined, 'foo')).to.equal(undefined);
+    expect(setDisplayName('', 'foo')).to.equal('');
+  });
+
+  it('should append the display name to the ref name if it does not have a display name', function test() {
+    const refName = 'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)';
+
+    setDisplayName(refName, 'foo').should.equal(
+      'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)\'foo\''
+    );
+  });
+
+  it('should replace the display name on a ref name that has a display name', function test() {
+    expect(setDisplayName(
+      'urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)\'Jane Doe\'',
+      'new one'
+    )).to.equal('urn:cspace:core.collectionspace.org:personauthorities:name(person):item:name(JaneDoe1484001439799)\'new one\'');
+
+    expect(setDisplayName(
+      'urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'Ancient Greek\'',
+      'something else'
+    )).to.equal('urn:cspace:core.collectionspace.org:vocabularies:name(languages):item:name(grc)\'something else\'');
   });
 });
