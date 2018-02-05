@@ -2,6 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const library = 'cspaceRefName';
 const env = process.env.NODE_ENV;
@@ -37,7 +38,7 @@ const config = {
 };
 
 if (isProduction) {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.plugins.push(new UglifyJsPlugin());
 }
 
 module.exports = config;
