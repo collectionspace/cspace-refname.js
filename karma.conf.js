@@ -8,31 +8,31 @@ const sauceLaunchers = {
     base: 'SauceLabs',
     browserName: 'chrome',
     version: 'latest',
-    platform: 'OS X 10.11',
+    platform: 'OS X 10.13',
   },
   'chrome-previous-osx': {
     base: 'SauceLabs',
     browserName: 'chrome',
     version: 'latest-1',
-    platform: 'OS X 10.11',
+    platform: 'OS X 10.13',
   },
   'firefox-latest-osx': {
     base: 'SauceLabs',
     browserName: 'firefox',
     version: 'latest',
-    platform: 'OS X 10.11',
+    platform: 'OS X 10.13',
   },
   'firefox-previous-osx': {
     base: 'SauceLabs',
     browserName: 'firefox',
     version: 'latest-1',
-    platform: 'OS X 10.11',
+    platform: 'OS X 10.13',
   },
   'safari-latest-osx': {
     base: 'SauceLabs',
     browserName: 'safari',
     version: 'latest',
-    platform: 'OS X 10.11',
+    platform: 'OS X 10.13',
   },
   'edge-latest-win10': {
     base: 'SauceLabs',
@@ -40,13 +40,12 @@ const sauceLaunchers = {
     version: 'latest',
     platform: 'Windows 10',
   },
-  'safari-ios-10.2': {
+  'safari-ios-11.2': {
     base: 'SauceLabs',
     browserName: 'safari',
     platformName: 'iOS',
-    platformVersion: '10.2',
-    deviceName: 'iPad Retina Simulator',
-    appiumVersion: '1.6',
+    platformVersion: '11.2',
+    deviceName: 'iPad Simulator',
   },
 };
 
