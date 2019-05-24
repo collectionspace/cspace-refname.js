@@ -1,8 +1,8 @@
 {
   "name": "cspace-refname",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CollectionSpace refname utilities",
-  "author": "Ray Lee <rhlee@berkeley.edu>",
+  "author": "Ray Lee <ray.lee@lyrasis.org>",
   "license": "ECL-2.0",
   "keywords": [
     "collectionspace",
@@ -37,17 +37,17 @@
     "test-browser": "cross-env NODE_ENV=test karma start --singleRun=true",
     "test-browser-specs": "cross-env NODE_ENV=test karma start --singleRun=true --dir=specs",
     "test-browser-integration": "cross-env NODE_ENV=test karma start --singleRun=true --dir=integration",
-    "test-node": "cross-env NODE_ENV=test nyc mocha --compilers js:babel-register --recursive test",
-    "test-node-specs": "cross-env NODE_ENV=test nyc mocha --compilers js:babel-register --recursive test/specs",
-    "test-node-integration": "cross-env NODE_ENV=test nyc mocha --compilers js:babel-register --recursive test/integration"
+    "test-node": "cross-env NODE_ENV=test nyc mocha  --require @babel/register --recursive test",
+    "test-node-specs": "cross-env NODE_ENV=test nyc mocha  --require @babel/register --recursive test/specs",
+    "test-node-integration": "cross-env NODE_ENV=test nyc mocha  --require @babel/register --recursive test/integration"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-istanbul": "^5.1.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^5.1.2",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "coveralls": "^3.0.2",
@@ -67,12 +67,13 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-sauce-launcher": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^3.0.5",
+    "karma-webpack": "^4.0.0-rc.6",
     "mocha": "^5.2.0",
-    "nyc": "^13.3.0",
+    "nyc": "^14.1.1",
     "rimraf": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.2.7",
-    "webpack": "^3.12.0"
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
   },
   "nyc": {
     "include": [
