@@ -33,7 +33,7 @@ export const getServicePath = (refName) => {
 };
 
 /**
- * Retrieves the vocabulary shord identifier from a given ref name.
+ * Retrieves the vocabulary short identifier from a given ref name.
  * @param {string} refName - The ref name
  * @returns {string} The short ID, or null if the ref name does not contain a vocabulary short ID.
  */
