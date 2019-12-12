@@ -49,9 +49,9 @@ export const getVocabularyShortID = (refName) => {
     const vocabNamePart = parts[4];
 
     if (
-      vocabNamePart &&
-      vocabNamePart.indexOf('name(') === 0 &&
-      vocabNamePart.lastIndexOf(')') === vocabNamePart.length - 1
+      vocabNamePart
+      && vocabNamePart.indexOf('name(') === 0
+      && vocabNamePart.lastIndexOf(')') === vocabNamePart.length - 1
     ) {
       return vocabNamePart.substring(5, vocabNamePart.length - 1);
     }
@@ -77,10 +77,7 @@ export const getItemShortID = (refName) => {
   if (itemPart === 'item') {
     const itemNamePart = parts[6];
 
-    if (
-      itemNamePart &&
-      itemNamePart.indexOf('name(') === 0
-    ) {
+    if (itemNamePart && itemNamePart.indexOf('name(') === 0) {
       const index = itemNamePart.indexOf(')');
 
       if (index > -1) {
@@ -105,10 +102,7 @@ export const getCsid = (refName) => {
   const parts = refName.split(':', 5);
   const idPart = parts[4];
 
-  if (
-    idPart &&
-    idPart.indexOf('id(') === 0
-  ) {
+  if (idPart && idPart.indexOf('id(') === 0) {
     const index = idPart.indexOf(')');
 
     if (index > -1) {
