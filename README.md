@@ -2,8 +2,8 @@
 
 
 [![npm package](https://img.shields.io/npm/v/cspace-refname.svg)](https://www.npmjs.com/package/cspace-refname)
-[![build status](https://travis-ci.org/collectionspace/cspace-refname.js.svg?branch=master)](https://travis-ci.org/collectionspace/cspace-refname.js)
-[![coverage status](https://coveralls.io/repos/github/collectionspace/cspace-refname.js/badge.svg?branch=master)](https://coveralls.io/github/collectionspace/cspace-refname.js?branch=master)
+[![continuous integration](https://github.com/collectionspace/cspace-refname.js/actions/workflows/ci-js.yml/badge.svg?branch=master&event=push)](https://github.com/collectionspace/cspace-refname.js/actions/workflows/ci-js.yml)
+
 
 This library provides utility functions for working with CollectionSpace [refnames](https://wiki.collectionspace.org/display/collectionspace/RefName).
 

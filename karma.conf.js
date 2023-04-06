@@ -17,15 +17,31 @@ const getTestFiles = (config) => {
 };
 
 module.exports = function karma(config) {
-  // This is a local run.
   const localBrowsers = ['Chrome'];
+  const githubBrowsers = ['Chrome', 'Firefox'];
 
-  console.log('Running locally.');
+  let browsers;
 
-  const browsers = localBrowsers;
+  if (process.env.GITHUB_ACTIONS) {
+    // This is a CI run on GitHub.
+
+    console.log('Running on GitHub.');
+
+    browsers = githubBrowsers;
+  } else {
+    // This is a local run.
+
+    console.log('Running locally.');
+
+    const localBrowsersEnv = process.env.KARMA_BROWSERS;
+
+    browsers = localBrowsersEnv ? localBrowsersEnv.split(',') : localBrowsers;
+  }
 
   config.set({
     browsers,
+    concurrency: 1,
+
     files: getTestFiles(config),
 
     frameworks: [
@@ -38,6 +54,12 @@ module.exports = function karma(config) {
       'mocha',
       'coverage',
     ],
+
+    client: {
+      mocha: {
+        timeout: 4000,
+      },
+    },
 
     autoWatch: true,
     singleRun: config.singleRun === 'true',
