@@ -3,7 +3,7 @@
 
 [![npm package](https://img.shields.io/npm/v/cspace-refname.svg)](https://www.npmjs.com/package/cspace-refname)
 [![continuous integration](https://github.com/collectionspace/cspace-refname.js/actions/workflows/ci-js.yml/badge.svg?branch=master&event=push)](https://github.com/collectionspace/cspace-refname.js/actions/workflows/ci-js.yml)
-[![codecov](https://codecov.io/gh/collectionspace/cspace-refname.js/branch/master/graph/badge.svg?token=MI8Y67Z9EB)](https://codecov.io/gh/collectionspace/cspace-refname.js)
+[![codecov](https://codecov.io/gh/collectionspace/cspace-refname.js/branch/master/graph/badge.svg?token=MI8Y67Z9EB)](https://app.codecov.io/gh/collectionspace/cspace-refname.js)
 
 This library provides utility functions for working with CollectionSpace [refnames](https://wiki.collectionspace.org/display/collectionspace/RefName).
 
